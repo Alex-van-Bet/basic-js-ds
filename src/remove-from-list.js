@@ -26,7 +26,7 @@ const {
  */
 function removeKFromList(l, k) {
 
-  if(!l.next) {
+  if (!l.next) {
     if (l.value === k) {
       return null;
     }
