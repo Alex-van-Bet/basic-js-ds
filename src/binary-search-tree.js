@@ -68,8 +68,22 @@ class BinarySearchTree {
   }
 
   find(data) {
-    let findData = this.has(this.rootNode, data);
-		return findData;
+    return searchWithin(this.rootNode, data);
+
+    function searchWithin(node, data) {
+      if (!node) {
+        return null;
+      }
+
+      if (node.data === data) {
+        return node;
+      }
+
+      return data < node.data ?
+        searchWithin(node.left, data) :
+        searchWithin(node.right, data);
+    }
+
   }
 
   remove(data) {
@@ -104,7 +118,7 @@ class BinarySearchTree {
 
         let minFromRight = node.right;
         while (minFromRight.left) {
-          minFromRight = minFromRight.data;
+          minFromRight = minFromRight.left;
         }
 
         node.data = minFromRight.data;
